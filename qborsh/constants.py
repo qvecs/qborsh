@@ -1,7 +1,6 @@
 import os
 
-from qborsh import Buffer
-from qborsh.csrc import py_borsh
+from qborsh import csrc
 
 
 # The default size (in bytes) of buffers used throughout qborsh. If you expect
@@ -28,8 +27,8 @@ def set_global_buffer(enable: bool) -> None:
 
 
 if os.environ.get("QBORSH_GLOBAL_BUFFER", "true").lower() in {"true", "on", "yes"}:
-    GLOBAL_BUFFER = Buffer(BUFFER_SIZE)
-    GLOBAL_BUFFER_SUB = Buffer(BUFFER_SIZE)
+    GLOBAL_BUFFER = csrc.Buffer(BUFFER_SIZE)
+    GLOBAL_BUFFER_SUB = csrc.Buffer(BUFFER_SIZE)
 else:
     GLOBAL_BUFFER = None
     GLOBAL_BUFFER_SUB = None
@@ -41,6 +40,15 @@ def set_validation(enable: bool) -> None:
 
 
 if os.environ.get("QBORSH_VALIDATE", "true").lower() in {"true", "on", "yes"}:
-    py_borsh.set_validation(True)
+    csrc.set_validation(True)
 else:
-    py_borsh.set_validation(False)
+    csrc.set_validation(False)
+
+__all__ = [
+    "BUFFER_SIZE",
+    "GLOBAL_BUFFER",
+    "GLOBAL_BUFFER_SUB",
+    "set_buffer_size",
+    "set_global_buffer",
+    "set_validation",
+]

@@ -1,3 +1,3 @@
-from .csrc import Buffer
-from .constants import *
-from .types import *
+from qborsh.constants import *
+from qborsh.csrc import *
+from qborsh.types import *
