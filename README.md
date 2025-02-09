@@ -1,4 +1,4 @@
-# Quick Borsh _(qborsh)_
+# 🗜️ Quick Borsh _(qborsh)_
 
 <p align="center">
 
